@@ -115,6 +115,7 @@
     <Content Include="CSS\EstilosInfoUsuario.css" />
     <Content Include="CSS\EstilosInicio.css" />
     <Content Include="CSS\EstilosLogin.css" />
+    <Content Include="CSS\EstilosNavbar.css" />
     <Content Include="CSS\EstilosSeccionAmigos.css" />
     <Content Include="InfoUsuario.aspx" />
     <Content Include="Login.aspx" />
@@ -131,6 +132,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOS\InfoUsuariosDto.cs" />
     <Compile Include="DTOS\UsuarioBuscadoDto.cs" />
     <Compile Include="InfoUsuario.aspx.cs">
       <DependentUpon>InfoUsuario.aspx</DependentUpon>
@@ -205,7 +207,6 @@
       <Name>FriendSyncDB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,4 +1,4 @@
-﻿using FriendSync.ModeloFriendSync;
+﻿using FriendSyncDB.ModeloFriendSync;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace FriendSyncForms
 {
     public partial class Login : System.Web.UI.Page
     {
-        FriendSync.ModeloFriendSync.FriendSyncBDEntities db = new FriendSync.ModeloFriendSync.FriendSyncBDEntities();
+        FriendSyncDB.ModeloFriendSync.FriendSyncBDEntities db = new FriendSyncDB.ModeloFriendSync.FriendSyncBDEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
 

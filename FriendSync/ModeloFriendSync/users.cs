@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FriendSync.ModeloFriendSync
+namespace FriendSyncDB.ModeloFriendSync
 {
     using System;
     using System.Collections.Generic;

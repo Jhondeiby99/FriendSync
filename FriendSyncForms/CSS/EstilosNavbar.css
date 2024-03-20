@@ -7,6 +7,11 @@
     padding-right: 110px;
     padding-left: 110px;
 }
+.listanavSA {
+    width: 100%;
+    padding-right: 110px;
+    padding-left: 110px;
+}
 
 .libarranav {
     width: 100%;
@@ -36,3 +41,18 @@
     margin-bottom: 3%;
 }
 
+#navUsuarioFoto {
+    width: 43px;
+    height: 40px;
+    border-radius: 100%;
+}
+#Button1 {
+    border: #f8f9fa;
+    background-color: #f8f9fa
+}
+
+.divBuscadorSeccionAmigos {
+    padding-left: 6%;
+    width: 30%;
+
+}

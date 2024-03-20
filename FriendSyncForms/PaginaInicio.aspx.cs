@@ -1,4 +1,4 @@
-﻿using FriendSync.ModeloFriendSync;
+﻿using FriendSyncDB.ModeloFriendSync;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace FriendSyncForms
 {
     public partial class PaginaInicio : System.Web.UI.Page
     {
-        FriendSync.ModeloFriendSync.FriendSyncBDEntities db = new FriendSync.ModeloFriendSync.FriendSyncBDEntities();
+        FriendSyncDB.ModeloFriendSync.FriendSyncBDEntities db = new FriendSyncDB.ModeloFriendSync.FriendSyncBDEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
             // Verificar si se recibió un ID de usuario desde la página de inicio de sesión
@@ -58,6 +58,9 @@ namespace FriendSyncForms
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect($"InfoUsuario.aspx?userId={Request.QueryString["userId"]}");
+        }protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"SeccionAmigos.aspx?userId={Request.QueryString["userId"]}");
         }
     }
 }

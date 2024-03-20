@@ -12,6 +12,15 @@ label {
     font-weight: bold;
 }
 
-.botonVolverinicio{
-    margin-top:10%;
+.formInfoUsuario {
+    
+    margin-bottom:5%;
 }
+.divcontenedorGeneral {
+    width: 30%;
+}
+.divBotones {
+    display: flex;
+    justify-content: space-between;
+}
+

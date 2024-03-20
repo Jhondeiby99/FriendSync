@@ -1,4 +1,5 @@
-﻿using FriendSyncForms.DTOS;
+﻿using FriendSyncDB.ModeloFriendSync;
+using FriendSyncForms.DTOS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,46 @@ namespace FriendSyncForms
 {
     public partial class SeccionAmigos : System.Web.UI.Page
     {
-        FriendSync.ModeloFriendSync.FriendSyncBDEntities db = new FriendSync.ModeloFriendSync.FriendSyncBDEntities();
+        FriendSyncDB.ModeloFriendSync.FriendSyncBDEntities db = new FriendSyncDB.ModeloFriendSync.FriendSyncBDEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Verificar si se recibió un ID de usuario desde la página de inicio de sesión
+            if (!IsPostBack && Request.QueryString["userId"] != null)
+            {
+                // Obtener el ID de usuario de la URL
+                int userId = Convert.ToInt32(Request.QueryString["userId"]);
+
+                // Cargar la información del usuario utilizando el ID
+                CargarInformacionUsuario(userId);
+            }
 
 
+        }
+        private void CargarInformacionUsuario(int userId)
+        {
+            // Crear una instancia del contexto de la base de datos
+            using (FriendSyncBDEntities db = new FriendSyncBDEntities())
+            {
+                // Obtener el usuario de la base de datos utilizando el ID proporcionado
+                users usuario = db.users.Find(userId);
+
+                if (usuario != null)
+                {
+                    // Mostrar el nombre del usuario en el título de la página
+                    Page.Title = $"{usuario.nombreUsuario}'s Pagina de Inicio";
+
+                    // Mostrar la foto de perfil del usuario
+                    if (usuario.fotoPerfil != null)
+                    {
+                        // Convertir la foto de perfil a una cadena base64
+                        string base64String = Convert.ToBase64String(usuario.fotoPerfil);
+                        string imageUrl = $"data:image/jpeg;base64,{base64String}";
+
+                        // Asignar la URL de la imagen al atributo src del elemento img en el HTML
+                        navUsuarioFoto.Src = imageUrl;
+                    }
+                }
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -24,7 +60,7 @@ namespace FriendSyncForms
 
             var usuariosEncontrados = db.users
                 .Where(user => user.nombreCompleto.Contains(searchTerm) || user.email.Contains(searchTerm))
-                .Select(user => new UsuarioBuscadoDto
+                .Select(user => new UsuarioBuscadoDto //
                 {
                     NombreCompleto = user.nombreCompleto,
                     Email = user.email,
@@ -56,11 +92,11 @@ namespace FriendSyncForms
                 cardBody.Attributes["class"] = "card-body";
 
                 Label lblTitle = new Label();
-                lblTitle.Text = "<b>Usuario:</b>"+usuario.NombreCompleto+"<br></br>";
+                lblTitle.Text = "<b>Usuario: </b>"+usuario.NombreCompleto+"<br></br>";
                 lblTitle.CssClass = "card-title";
 
                 Label lblText = new Label();
-                lblText.Text = "<b>Email: </b>"+usuario.Email;
+                lblText.Text = "<b>Email:  </b>"+usuario.Email;
                 lblText.CssClass = "card-text";
 
                 cardBody.Controls.Add(img);
@@ -73,6 +109,13 @@ namespace FriendSyncForms
             }
 
 
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"InfoUsuario.aspx?userId={Request.QueryString["userId"]}");
+        }protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"PaginaInicio.aspx?userId={Request.QueryString["userId"]}");
         }
     }
 }
