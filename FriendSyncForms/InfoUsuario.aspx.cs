@@ -109,7 +109,7 @@ namespace FriendSyncForms
             }
         protected void Button3_Click(object sender, EventArgs e)
             {
-            var user = db.users.Find(txtIdUsuario.Text);
+            var user = db.users.Find(int.Parse(txtIdUsuario.Text));
             if (user != null)
             {
                 user.nombreUsuario = txtNombreUsuario.Text;

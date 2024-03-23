@@ -51,6 +51,9 @@
                         <div class="text-center ">
                             <asp:Button ID="Button1" runat="server" Text="Iniciar Sesión" 
                                 CssClass="btn btn-primary botonLogin" OnClick="Button1_Click" />
+                        </div><div class="text-center ">
+                            <asp:Button ID="Button2" runat="server" Text="Registrarse" 
+                                CssClass="btn btn-primary botonRegistrarse" OnClick="Button2_Click" />
                         </div>
                     </div>
                 </div>

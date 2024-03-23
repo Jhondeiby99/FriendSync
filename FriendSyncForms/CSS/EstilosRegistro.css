@@ -1,0 +1,22 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../Media//imagenLogin.jpg');
+    background-size: 120%;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+.ContenedorGeneral {
+    border: 1px solid lightgray;
+    border-radius: 3%;
+    width: 50%;
+    margin: 5% auto 5% auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #ccc;
+}
+.camposRegistro {
+        
+    text-align: left; 
+    margin: 10px 55px;
+}

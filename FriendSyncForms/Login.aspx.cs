@@ -55,5 +55,10 @@ namespace FriendSyncForms
 
             return usuario != null;
         }
-    }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"PaginaRegistro.aspx");
+        }
+        }
 }

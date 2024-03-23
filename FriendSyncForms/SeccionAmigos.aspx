@@ -31,7 +31,7 @@
 
                             <asp:TextBox CssClass="textBox1 form-control " ID="TextBox1" runat="server"></asp:TextBox>
 
-                            <asp:Button CssClass="boton1 btn btn-primary" ID="Button1" runat="server" Text="Buscar Usuarios:"
+                            <asp:Button CssClass="boton1 btn btn-primary" ID="Button1" runat="server" Text="Buscar Usuarios"
                                 OnClick="Button1_Click" />
 
 
