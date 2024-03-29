@@ -1,22 +1,87 @@
 ﻿body {
     margin: 0;
     padding: 0;
-    background-image: url('../Media//imagenLogin.jpg');
-    background-size: 120%;
+    position: relative;
+    background-image: url('../Media/imagenLogin.jpg');
+    background-size: cover;
     background-position: center;
     font-family: Arial, sans-serif;
 }
+
+    body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(50, 1, 50, 0.76);
+        z-index: 1;
+    }
+
 .ContenedorGeneral {
+    position: relative;
+    z-index: 2;
     border: 1px solid lightgray;
     border-radius: 3%;
     width: 50%;
-    margin: 5% auto 5% auto;
+    margin: 5% auto;
     padding: 20px;
     text-align: center;
-    background-color: #ccc;
+    background-color: #ffffff;
 }
+
 .camposRegistro {
-        
-    text-align: left; 
-    margin: 10px 55px;
+    text-align: left;
+}
+
+.divTitulito {
+    width: 80%;
+    margin: auto;
+}
+
+.formulario {
+    width: 80%;
+    margin: 5% auto;
+}
+.cajasdetexto {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+    .formulario .form-group {
+        flex: auto;
+        margin-bottom: 20px;
+    }
+
+        .formulario .form-group > div {
+            display: flex;
+            justify-content: space-between;
+            flex: 0 0 50%;
+            margin-right: 10px;
+        }
+
+    .formulario .control-label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .formulario .form-control {
+        width: calc(100% - 10px); 
+        margin-bottom: 10px;
+    }
+
+.btn-primary {
+    margin-top: 20px;
+}
+.botoncrearusuario {
+    margin-top: 20px;
+    text-align: center;
+}
+.labeledad {
+    width: 48%;
+}
+.cajaedad {
+    width: 48% !important;
 }

@@ -99,6 +99,10 @@
                                 Text="Eliminar Cuenta" />
                         </div>
                         <div>
+                            <asp:Button ID="Button5" runat="server" CssClass="btn btn-danger" OnClick="Button5_Click"
+                                Text="cerrar sesion" />
+                        </div>
+                        <div>
                             <asp:Label ID="Label1" runat="server"></asp:Label>
                         </div>
                     </div>

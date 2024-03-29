@@ -42,3 +42,7 @@
         background-color: #480a8b;
         border-color: #480a8b;
     }
+.divlabel {
+    margin: auto;
+    width: 50%;
+}

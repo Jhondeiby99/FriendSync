@@ -127,6 +127,10 @@ namespace FriendSyncForms
         protected void Button4_Click(object sender, EventArgs e)
             {
             }
+        protected void Button5_Click(object sender, EventArgs e)
+            {
+            Response.Redirect($"login.aspx");
+        }
 
         
 

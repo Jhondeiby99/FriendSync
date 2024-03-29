@@ -60,7 +60,7 @@ namespace FriendSyncForms
 
             var usuariosEncontrados = db.users
                 .Where(user => user.nombreCompleto.Contains(searchTerm) || user.email.Contains(searchTerm))
-                .Select(user => new UsuarioBuscadoDto //
+                .Select(user => new UsuarioBuscadoDto 
                 {
                     NombreCompleto = user.nombreCompleto,
                     Email = user.email,

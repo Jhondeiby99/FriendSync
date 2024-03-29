@@ -55,13 +55,18 @@
                             <asp:Button ID="Button2" runat="server" Text="Registrarse" 
                                 CssClass="btn btn-primary botonRegistrarse" OnClick="Button2_Click" />
                         </div>
+                            <div class="divlabel">
+                                 <asp:Label ID="Label1" runat="server"></asp:Label>
+                            </div>
+                           
                     </div>
+                        
                 </div>
                     </div>
             </div>
         </form>
     </div>
-    <asp:Label ID="Label1" runat="server"></asp:Label>
+    
 </body>
 
 </html>
