@@ -78,10 +78,23 @@
 .botoncrearusuario {
     margin-top: 20px;
     text-align: center;
+    background-color: #7715e1;
+    width: 100%;
+    height: 41px;
+    border-radius: 9px;
+    border-color: #7715e1;
 }
+    .botoncrearusuario:hover {
+        background-color: #480a8b;
+        border-color: #480a8b;
+    }
 .labeledad {
     width: 48%;
 }
 .cajaedad {
     width: 48% !important;
+}
+
+.registroTextBox {
+    background-color: #e9ecefd1;
 }

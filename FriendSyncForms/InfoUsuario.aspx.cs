@@ -27,9 +27,10 @@ namespace FriendSyncForms
                     {
                         var usuario = db.users.FirstOrDefault(u => u.IdUsuario == userId);
 
+
                         if (usuario != null)
                         {
-                            var infousuarioDto = new InfoUsuarioDto //
+                            var infousuarioDto = new InfoUsuarioDto 
                             {
                                 IdUsuario = usuario.IdUsuario,
                                 NombreUsuario = usuario.nombreUsuario,
@@ -60,39 +61,29 @@ namespace FriendSyncForms
                 }
             }
 
-            // Verificar si se recibió un ID de usuario desde la página de inicio de sesión
             if (!IsPostBack && Request.QueryString["userId"] != null)
             {
-                // Obtener el ID de usuario de la URL
                 int userId = Convert.ToInt32(Request.QueryString["userId"]);
 
-                // Cargar la información del usuario utilizando el ID
                 CargarInformacionUsuario(userId);
             }
         }
 
-        // Método para cargar la información del usuario
         private void CargarInformacionUsuario(int userId)
         {
-            // Crear una instancia del contexto de la base de datos
             using (FriendSyncBDEntities db = new FriendSyncBDEntities())
             {
-                // Obtener el usuario de la base de datos utilizando el ID proporcionado
                 users usuario = db.users.Find(userId);
 
                 if (usuario != null)
                 {
-                    // Mostrar el nombre del usuario en el título de la página
                     Page.Title = $"{usuario.nombreUsuario}'s Pagina de Inicio";
 
-                    // Mostrar la foto de perfil del usuario
                     if (usuario.fotoPerfil != null)
                     {
-                        // Convertir la foto de perfil a una cadena base64
                         string base64String = Convert.ToBase64String(usuario.fotoPerfil);
                         string imageUrl = $"data:image/jpeg;base64,{base64String}";
 
-                        // Asignar la URL de la imagen al atributo src del elemento img en el HTML
                         navUsuarioFoto.Src = imageUrl;
                     }
                 }
@@ -110,13 +101,37 @@ namespace FriendSyncForms
         protected void Button3_Click(object sender, EventArgs e)
             {
             var user = db.users.Find(int.Parse(txtIdUsuario.Text));
+
             if (user != null)
             {
                 user.nombreUsuario = txtNombreUsuario.Text;
                 user.email = txtEmail.Text ;
                 user.nombreCompleto = txtNombreCompleto.Text;
+                user.contraseña = txtContraseña.Text;
                 user.fechaNac = DateTime.Parse(txtFechaNacimiento.Text);
-                db.SaveChanges();
+                
+                if (FileUpload1.HasFile)
+                {
+                    try
+                    {
+                        HttpPostedFile archivo = FileUpload1.PostedFile;
+                        int longitud = archivo.ContentLength;
+                        byte[] bytesImagen = new byte[longitud];
+                        archivo.InputStream.Read(bytesImagen, 0, longitud);
+
+                        user.fotoPerfil = bytesImagen;
+                        Response.Write("<script>Alert(En el proximo inicio de sesion se veran reflejados los cambios);</script>");
+                        string base64String = Convert.ToBase64String(user.fotoPerfil);
+                        string imageUrl = $"data:image/jpeg;base64,{base64String}";
+                        userImage.Src = imageUrl;
+                        navUsuarioFoto.Src = imageUrl;
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write("<script>Alert(Error al procesar el archivo cargado: " + ex.Message+");</script>");
+                    }
+                }
+                    db.SaveChanges();
 
             }
             else
@@ -126,7 +141,22 @@ namespace FriendSyncForms
         }
         protected void Button4_Click(object sender, EventArgs e)
             {
+            int idUsuario = int.Parse(txtIdUsuario.Text);
+
+            var usuario = db.users.Find(idUsuario);
+
+            if (usuario != null)
+            {
+                db.users.Remove(usuario);
+                db.SaveChanges();
+                    
+                Response.Redirect($"login.aspx");
             }
+            else
+            {
+                Response.Write("No se encontró ningún usuario con el ID especificado.");
+            }
+        }
         protected void Button5_Click(object sender, EventArgs e)
             {
             Response.Redirect($"login.aspx");

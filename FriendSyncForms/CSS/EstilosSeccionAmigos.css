@@ -31,4 +31,7 @@ card-img-top {
     width: 50% ;
     display: inline-flex;
 }
-
+.logonav {
+    width: 50px;
+    margin-right: 2%;
+}

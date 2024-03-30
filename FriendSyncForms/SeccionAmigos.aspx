@@ -10,9 +10,10 @@
         rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous" />
 
-
+    <link rel="icon" href="../Media/LogoFriendSync.png" type="image/x-icon">
     <link rel="stylesheet" href="../CSS/EstilosSeccionAmigos.css" />
     <link rel="stylesheet" href="../CSS/EstilosNavbar.css" />
+    <link rel="icon" href="../Media/LogoFriendSync.png" type="image/x-icon">
     <title>Amigos</title>
 </head>
 <body>
@@ -21,6 +22,7 @@
             <form id="form1" runat="server">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light barranav">
                     <div class="container">
+                        <img class="logonav" src ="../Media/LogoFriendSync.png" alt="Icono"/>
                         <a class="navbar-brand tituloNavInicio" href="">FriendSync</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +50,7 @@
                                     </button>
                                 </li>
                                 <li class="libarranav">
-                                    <a class="nav-link" href="/SeccionAmigos.aspx">
+                                    <a class="nav-link" href="">
                                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" class="x19dipnz x1lliihq x1k90msu x2h7rmj x1qfuztq"
                                             style="color: #570ea5">
                                             <path d="M8 2.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zM5.5 7a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0zm-.25 6A4.75 4.75 0 0 0 .5 17.75 3.25 3.25 0 0 0 3.75 21h8.5a3.25 3.25 0 0 0 3.25-3.25A4.75 4.75 0 0 0 10.75 13h-5.5zM2.5 17.75A2.75 2.75 0 0 1 5.25 15h5.5a2.75 2.75 0 0 1 2.75 2.75c0 .69-.56 1.25-1.25 1.25h-8.5c-.69 0-1.25-.56-1.25-1.25zM14 9.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0zM17.5 8a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm0 6.5a1 1 0 1 0 0 2h2.3a1.7 1.7 0 0 1 1.7 1.7.8.8 0 0 1-.8.8h-3.2a1 1 0 1 0 0 2h3.2a2.8 2.8 0 0 0 2.8-2.8 3.7 3.7 0 0 0-3.7-3.7h-2.3z">

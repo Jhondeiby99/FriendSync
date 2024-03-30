@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Inicia Sesion</title>
+    <link rel="icon" href="../Media/LogoFriendSync.png" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous" />
@@ -21,6 +22,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjUEfvqsFZD6J6eVHzI6pPbAR5JN1Hb"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../CSS/EstilosLogin.css"/>
+
 
 </head>
 <body>
@@ -57,6 +59,9 @@
                         </div>
                             <div class="divlabel">
                                  <asp:Label ID="Label1" runat="server"></asp:Label>
+                            </div>
+                            <div class="divOlviContra">
+                                 <a class="botonOlvidasteC" href="RecuperarContrasena.aspx">¿Olvidaste tu contraseña?</a>
                             </div>
                            
                     </div>

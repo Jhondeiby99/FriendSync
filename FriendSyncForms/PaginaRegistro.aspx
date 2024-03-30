@@ -11,6 +11,9 @@
         rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous" />
     <link rel="stylesheet" href="../CSS/EstilosRegistro.css" />
+    <link rel="icon" href="../Media/LogoFriendSync.png" type="image/x-icon">
+
+
 </head>
 <body>
     <div class="ContenedorGeneral">
@@ -24,28 +27,28 @@
                 
                 <div class="form-group camposRegistro">
                     <asp:Label ID="Label2" runat="server" Text="NombreUsuario" CssClass="control-label"></asp:Label>
-                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control registroTextBox"></asp:TextBox>
                 </div>
                 <div class="form-group camposRegistro">
                     <asp:Label ID="Label3" runat="server" Text="Email" CssClass="control-label"></asp:Label>
-                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control registroTextBox"></asp:TextBox>
                 </div>
                 <div class="form-group camposRegistro">
                     <asp:Label ID="Label4" runat="server" Text="Contraseña" CssClass="control-label"></asp:Label>
-                    <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control registroTextBox"></asp:TextBox>
                 </div>
                 <div class="form-group camposRegistro">
                     <asp:Label ID="Label5" runat="server" Text="NombreCompleto" CssClass="control-label"></asp:Label>
-                    <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control registroTextBox"></asp:TextBox>
                 </div>
                 <div class="form-group camposRegistro">
                     <asp:Label ID="Label6" runat="server" Text="Fecha de Nacimiento" CssClass="control-label"></asp:Label>
                     <asp:TextBox ID="TextBox6" runat="server" Type="date" pattern="\d{2}-\d{2}-\d{4}"
-                        CssClass="form-control"></asp:TextBox>
+                        CssClass="form-control registroTextBox"></asp:TextBox>
                 </div>
                 <div class="form-group camposRegistro">
                     <asp:Label ID="Label7" runat="server" Text="Foto de perfil" CssClass="control-label"></asp:Label>
-                    <asp:FileUpload ID="FileUpload1" runat="server" accept="image/*" CssClass="form-control" />
+                    <asp:FileUpload ID="FileUpload1" runat="server" accept="image/*" CssClass="form-control registroTextBox" />
                     <div>
                         <img id="imagenPerfil" src="#" alt="Vista previa de la imagen" style="max-width: 100px;
                             display: none; margin: auto;" />

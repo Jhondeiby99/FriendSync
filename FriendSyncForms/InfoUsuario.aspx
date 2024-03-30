@@ -6,8 +6,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
-    <!-- Enlaces a los estilos de Bootstrap -->
+        
+    <link rel="icon" href="../Media/LogoFriendSync.png" type="image/x-icon">
+        <!-- Enlaces a los estilos de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
@@ -19,6 +20,7 @@
         <form class="formInfoUsuario" id="form1" runat="server">
             <nav class="navbar navbar-expand-lg navbar-light bg-light barranav">
                 <div class="container">
+                    <img class="logonav" src ="../Media/LogoFriendSync.png" alt="Icono"/>
                     <a class="navbar-brand tituloNavInicio" href="">FriendSync</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,6 +91,29 @@
                         <label for="txtFechaNacimiento">Fecha de Nacimiento:</label>
                         <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
+                    <div class="form-group camposRegistro detail">
+                        <label class="control-label">Foto de perfil</label>
+                        <asp:FileUpload ID="FileUpload1" runat="server" accept="image/*" CssClass="form-control" />
+                        <div>
+                            <img id="imagenPerfil" src="#" alt="Vista previa de la imagen" style="max-width: 100px;
+                                display: none; margin: auto;" />
+                        </div>
+                    </div>
+
+                    <script>
+                        document.getElementById('<%= FileUpload1.ClientID %>').addEventListener('change', function () {
+                            var archivo = this.files[0];
+                            if (archivo) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    var imagenPerfil = document.getElementById('imagenPerfil');
+                                    imagenPerfil.src = e.target.result;
+                                    imagenPerfil.style.display = 'inline-block';
+                                }
+                                reader.readAsDataURL(archivo);
+                            }
+                        });
+                    </script>
                     <div class="divBotones">
                         <div>
                             <asp:Button ID="Button3" runat="server" CssClass="btn btn-warning" OnClick="Button3_Click"

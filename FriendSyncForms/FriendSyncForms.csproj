@@ -116,6 +116,7 @@
     <Content Include="CSS\EstilosInicio.css" />
     <Content Include="CSS\EstilosLogin.css" />
     <Content Include="CSS\EstilosNavbar.css" />
+    <Content Include="CSS\EstilosRecuperarContrasena.css" />
     <Content Include="CSS\EstilosRegistro.css" />
     <Content Include="CSS\EstilosSeccionAmigos.css" />
     <Content Include="InfoUsuario.aspx" />
@@ -123,8 +124,10 @@
     <Content Include="Media\imagen1.jpg" />
     <Content Include="Media\imagen2.jpg" />
     <Content Include="Media\imagenLogin.jpg" />
+    <Content Include="Media\LogoFriendSync.png" />
     <Content Include="PaginaInicio.aspx" />
     <Content Include="PaginaRegistro.aspx" />
+    <Content Include="RecuperarContrasena.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -136,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOS\InfoUsuariosDto.cs" />
+    <Compile Include="DTOS\RestablecerContraseñaDto.cs" />
     <Compile Include="DTOS\UsuarioBuscadoDto.cs" />
     <Compile Include="InfoUsuario.aspx.cs">
       <DependentUpon>InfoUsuario.aspx</DependentUpon>
@@ -166,6 +170,13 @@
       <DependentUpon>PaginaRegistro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecuperarContrasena.aspx.cs">
+      <DependentUpon>RecuperarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperarContrasena.aspx.designer.cs">
+      <DependentUpon>RecuperarContrasena.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SeccionAmigos.aspx.cs">
       <DependentUpon>SeccionAmigos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

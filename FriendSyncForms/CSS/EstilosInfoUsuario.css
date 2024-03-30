@@ -23,4 +23,18 @@ label {
     display: flex;
     justify-content: space-between;
 }
-
+.formulario .form-group {
+    flex: auto;
+    margin-bottom: 20px;
+}
+.divcontenedorGeneral .form-group > div {
+    padding-top:5%;
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 50%;
+    margin-right: 10px;
+}
+.logonav {
+    width: 50px;
+    margin-right: 2%;
+}

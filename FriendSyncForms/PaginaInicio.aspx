@@ -9,7 +9,7 @@
         rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous"/>
 
-
+    <link rel="icon" href="../Media/LogoFriendSync.png" type="image/x-icon">
     <link rel="stylesheet" href="../CSS/EstilosInicio.css" />
     <link rel="stylesheet" href="../CSS/EstilosNavbar.css" />
     <title>Inicio de FriendSync</title>
@@ -19,6 +19,7 @@
         <form id="form2" runat="server">
             <nav class="navbar navbar-expand-lg navbar-light bg-light barranav">
                 <div class="container">
+                    <img class="logonav" src ="../Media/LogoFriendSync.png" alt="Icono"/>
                     <a class="navbar-brand tituloNavInicio" href="">FriendSync</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

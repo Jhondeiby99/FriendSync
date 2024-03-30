@@ -46,3 +46,15 @@
     margin: auto;
     width: 50%;
 }
+.botonOlvidasteC:hover {
+    text-decoration: none !important;
+    color: #480a8b;
+}
+.botonOlvidasteC{
+    color: #7715e1;
+}
+.divOlviContra {
+    color: #7715e1;
+    margin: auto;
+    width: 50%;
+}
