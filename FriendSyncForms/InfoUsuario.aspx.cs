@@ -140,16 +140,58 @@ namespace FriendSyncForms
             }
         }
         protected void Button4_Click(object sender, EventArgs e)
-            {
+        {
             int idUsuario = int.Parse(txtIdUsuario.Text);
 
             var usuario = db.users.Find(idUsuario);
 
             if (usuario != null)
             {
+                // Eliminar los comentarios del usuario
+                var comentariosUsuario = db.Comentarios.Where(c => c.IdUsuario == idUsuario).ToList();
+                foreach (var comentario in comentariosUsuario)
+                {
+                    db.Comentarios.Remove(comentario);
+                }
+
+                // Eliminar las publicaciones del usuario
+                var publicacionesUsuario = db.Publicaciones.Where(p => p.IdUsuario == idUsuario).ToList();
+                foreach (var publicacion in publicacionesUsuario)
+                {
+                    // Eliminar los comentarios asociados a la publicación
+                    var comentariosPublicacion = db.Comentarios.Where(c => c.IdPublicacion == publicacion.IdPublicacion).ToList();
+                    foreach (var comentario in comentariosPublicacion)
+                    {
+                        db.Comentarios.Remove(comentario);
+                    }
+
+                    db.Publicaciones.Remove(publicacion);
+                }
+
+                // Eliminar las relaciones de amistad donde el usuario es parte
+                var relacionesAmistad = db.Amigos.Where(a => a.UsuarioId1 == idUsuario || a.UsuarioId2 == idUsuario).ToList();
+                foreach (var relacion in relacionesAmistad)
+                {
+                    db.Amigos.Remove(relacion);
+                }
+
+                // Eliminar las solicitudes de amistad enviadas o recibidas por el usuario
+                var solicitudesPendientes = db.SolicitudesAmistad.Where(s => s.IdUsuarioEmisor == idUsuario || s.IdUsuarioReceptor == idUsuario).ToList();
+                foreach (var solicitud in solicitudesPendientes)
+                {
+                    db.SolicitudesAmistad.Remove(solicitud);
+                }
+
+                // Eliminar al usuario
                 db.users.Remove(usuario);
+
+                // Guardar los cambios en la base de datos
                 db.SaveChanges();
-                    
+
+                // Ajustar el identity del ID
+                var maxId = db.users.Max(u => u.IdUsuario);
+                db.Database.ExecuteSqlCommand($"DBCC CHECKIDENT ('users', RESEED, {maxId - 1})");
+
                 Response.Redirect($"login.aspx");
             }
             else
@@ -157,6 +199,9 @@ namespace FriendSyncForms
                 Response.Write("No se encontró ningún usuario con el ID especificado.");
             }
         }
+
+
+
         protected void Button5_Click(object sender, EventArgs e)
             {
             Response.Redirect($"login.aspx");

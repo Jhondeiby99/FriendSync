@@ -51,6 +51,15 @@ namespace FriendSyncForms
         protected global::System.Web.UI.HtmlControls.HtmlButton Button3;
 
         /// <summary>
+        /// Control panelSolicitudesNuevas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl panelSolicitudesNuevas;
+
+        /// <summary>
         /// Control Button2.
         /// </summary>
         /// <remarks>
@@ -76,5 +85,23 @@ namespace FriendSyncForms
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder phAmigos;
+
+        /// <summary>
+        /// Control respuestaSolicitud.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label respuestaSolicitud;
+
+        /// <summary>
+        /// Control divListaAmigos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divListaAmigos;
     }
 }

@@ -14,6 +14,17 @@ namespace FriendSyncDB.ModeloFriendSync
     
     public partial class users
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public users()
+        {
+            this.Comentarios = new HashSet<Comentarios>();
+            this.Publicaciones = new HashSet<Publicaciones>();
+            this.SolicitudesAmistad = new HashSet<SolicitudesAmistad>();
+            this.SolicitudesAmistad1 = new HashSet<SolicitudesAmistad>();
+            this.Amigos = new HashSet<Amigos>();
+            this.Amigos1 = new HashSet<Amigos>();
+        }
+    
         public int IdUsuario { get; set; }
         public string nombreUsuario { get; set; }
         public string email { get; set; }
@@ -21,5 +32,18 @@ namespace FriendSyncDB.ModeloFriendSync
         public string nombreCompleto { get; set; }
         public Nullable<System.DateTime> fechaNac { get; set; }
         public byte[] fotoPerfil { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comentarios> Comentarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Publicaciones> Publicaciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SolicitudesAmistad> SolicitudesAmistad { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SolicitudesAmistad> SolicitudesAmistad1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Amigos> Amigos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Amigos> Amigos1 { get; set; }
     }
 }

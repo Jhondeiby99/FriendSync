@@ -5,6 +5,47 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="FriendSyncBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Amigos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId1" Type="int" />
+          <Property Name="UsuarioId2" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="20" />
+          <Property Name="FechaAceptacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Comentarios">
+          <Key>
+            <PropertyRef Name="IdComentario" />
+          </Key>
+          <Property Name="IdComentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPublicacion" Type="int" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="Contenido" Type="nvarchar(max)" />
+          <Property Name="FechaComentario" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Publicaciones">
+          <Key>
+            <PropertyRef Name="IdPublicacion" />
+          </Key>
+          <Property Name="IdPublicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="Contenido" Type="nvarchar(max)" />
+          <Property Name="FechaPublicacion" Type="datetime" />
+          <Property Name="Imagen" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="SolicitudesAmistad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuarioEmisor" Type="int" Nullable="false" />
+          <Property Name="IdUsuarioReceptor" Type="int" Nullable="false" />
+          <Property Name="FechaSolicitud" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaRespuesta" Type="datetime" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="IdUsuario" />
@@ -17,8 +58,124 @@
           <Property Name="fechaNac" Type="date" />
           <Property Name="fotoPerfil" Type="varbinary(max)" />
         </EntityType>
+        <Association Name="FK__Amigos__UsuarioI__5CD6CB2B">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="Amigos" Type="Self.Amigos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Amigos">
+              <PropertyRef Name="UsuarioId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Amigos__UsuarioI__5DCAEF64">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="Amigos" Type="Self.Amigos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Amigos">
+              <PropertyRef Name="UsuarioId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__IdPub__5441852A">
+          <End Role="Publicaciones" Type="Self.Publicaciones" Multiplicity="0..1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicaciones">
+              <PropertyRef Name="IdPublicacion" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="IdPublicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__IdUsu__5535A963">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicaci__IdUsu__5165187F">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="Publicaciones" Type="Self.Publicaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Publicaciones">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioEmisor">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="SolicitudesAmistad" Type="Self.SolicitudesAmistad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="SolicitudesAmistad">
+              <PropertyRef Name="IdUsuarioEmisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioReceptor">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="SolicitudesAmistad" Type="Self.SolicitudesAmistad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="SolicitudesAmistad">
+              <PropertyRef Name="IdUsuarioReceptor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FriendSyncBDModelStoreContainer">
+          <EntitySet Name="Amigos" EntityType="Self.Amigos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comentarios" EntityType="Self.Comentarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publicaciones" EntityType="Self.Publicaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SolicitudesAmistad" EntityType="Self.SolicitudesAmistad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Amigos__UsuarioI__5CD6CB2B" Association="Self.FK__Amigos__UsuarioI__5CD6CB2B">
+            <End Role="users" EntitySet="users" />
+            <End Role="Amigos" EntitySet="Amigos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Amigos__UsuarioI__5DCAEF64" Association="Self.FK__Amigos__UsuarioI__5DCAEF64">
+            <End Role="users" EntitySet="users" />
+            <End Role="Amigos" EntitySet="Amigos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__IdPub__5441852A" Association="Self.FK__Comentari__IdPub__5441852A">
+            <End Role="Publicaciones" EntitySet="Publicaciones" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__IdUsu__5535A963" Association="Self.FK__Comentari__IdUsu__5535A963">
+            <End Role="users" EntitySet="users" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicaci__IdUsu__5165187F" Association="Self.FK__Publicaci__IdUsu__5165187F">
+            <End Role="users" EntitySet="users" />
+            <End Role="Publicaciones" EntitySet="Publicaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioEmisor" Association="Self.FK_UsuarioEmisor">
+            <End Role="users" EntitySet="users" />
+            <End Role="SolicitudesAmistad" EntitySet="SolicitudesAmistad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioReceptor" Association="Self.FK_UsuarioReceptor">
+            <End Role="users" EntitySet="users" />
+            <End Role="SolicitudesAmistad" EntitySet="SolicitudesAmistad" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -35,10 +192,181 @@
           <Property Name="nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fechaNac" Type="DateTime" Precision="0" />
           <Property Name="fotoPerfil" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Comentarios" Relationship="FriendSyncBDModel.FK__Comentari__IdUsu__5535A963" FromRole="users" ToRole="Comentarios" />
+          <NavigationProperty Name="Publicaciones" Relationship="FriendSyncBDModel.FK__Publicaci__IdUsu__5165187F" FromRole="users" ToRole="Publicaciones" />
+          <NavigationProperty Name="SolicitudesAmistad" Relationship="FriendSyncBDModel.FK_UsuarioEmisor" FromRole="users" ToRole="SolicitudesAmistad" />
+          <NavigationProperty Name="SolicitudesAmistad1" Relationship="FriendSyncBDModel.FK_UsuarioReceptor" FromRole="users" ToRole="SolicitudesAmistad" />
+          <NavigationProperty Name="Amigos" Relationship="FriendSyncBDModel.FK__Amigos__UsuarioI__5CD6CB2B" FromRole="users" ToRole="Amigos" />
+          <NavigationProperty Name="Amigos1" Relationship="FriendSyncBDModel.FK__Amigos__UsuarioI__5DCAEF64" FromRole="users" ToRole="Amigos" />
         </EntityType>
         <EntityContainer Name="FriendSyncBDEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="users" EntityType="Self.users" />
+          <EntitySet Name="Comentarios" EntityType="FriendSyncBDModel.Comentarios" />
+          <EntitySet Name="Publicaciones" EntityType="FriendSyncBDModel.Publicaciones" />
+          <AssociationSet Name="FK__Comentari__IdPub__5441852A" Association="FriendSyncBDModel.FK__Comentari__IdPub__5441852A">
+            <End Role="Publicaciones" EntitySet="Publicaciones" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__IdUsu__5535A963" Association="FriendSyncBDModel.FK__Comentari__IdUsu__5535A963">
+            <End Role="users" EntitySet="users" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Publicaci__IdUsu__5165187F" Association="FriendSyncBDModel.FK__Publicaci__IdUsu__5165187F">
+            <End Role="users" EntitySet="users" />
+            <End Role="Publicaciones" EntitySet="Publicaciones" />
+          </AssociationSet>
+          <EntitySet Name="SolicitudesAmistad" EntityType="FriendSyncBDModel.SolicitudesAmistad" />
+          <AssociationSet Name="FK_UsuarioEmisor" Association="FriendSyncBDModel.FK_UsuarioEmisor">
+            <End Role="users" EntitySet="users" />
+            <End Role="SolicitudesAmistad" EntitySet="SolicitudesAmistad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioReceptor" Association="FriendSyncBDModel.FK_UsuarioReceptor">
+            <End Role="users" EntitySet="users" />
+            <End Role="SolicitudesAmistad" EntitySet="SolicitudesAmistad" />
+          </AssociationSet>
+          <EntitySet Name="Amigos" EntityType="FriendSyncBDModel.Amigos" />
+          <AssociationSet Name="FK__Amigos__UsuarioI__5CD6CB2B" Association="FriendSyncBDModel.FK__Amigos__UsuarioI__5CD6CB2B">
+            <End Role="users" EntitySet="users" />
+            <End Role="Amigos" EntitySet="Amigos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Amigos__UsuarioI__5DCAEF64" Association="FriendSyncBDModel.FK__Amigos__UsuarioI__5DCAEF64">
+            <End Role="users" EntitySet="users" />
+            <End Role="Amigos" EntitySet="Amigos" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Comentarios">
+          <Key>
+            <PropertyRef Name="IdComentario" />
+          </Key>
+          <Property Name="IdComentario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPublicacion" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaComentario" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Publicaciones" Relationship="FriendSyncBDModel.FK__Comentari__IdPub__5441852A" FromRole="Comentarios" ToRole="Publicaciones" />
+          <NavigationProperty Name="users" Relationship="FriendSyncBDModel.FK__Comentari__IdUsu__5535A963" FromRole="Comentarios" ToRole="users" />
+        </EntityType>
+        <EntityType Name="Publicaciones">
+          <Key>
+            <PropertyRef Name="IdPublicacion" />
+          </Key>
+          <Property Name="IdPublicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaPublicacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Comentarios" Relationship="FriendSyncBDModel.FK__Comentari__IdPub__5441852A" FromRole="Publicaciones" ToRole="Comentarios" />
+          <NavigationProperty Name="users" Relationship="FriendSyncBDModel.FK__Publicaci__IdUsu__5165187F" FromRole="Publicaciones" ToRole="users" />
+          <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__Comentari__IdPub__5441852A">
+          <End Type="FriendSyncBDModel.Publicaciones" Role="Publicaciones" Multiplicity="0..1" />
+          <End Type="FriendSyncBDModel.Comentarios" Role="Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicaciones">
+              <PropertyRef Name="IdPublicacion" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="IdPublicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__IdUsu__5535A963">
+          <End Type="FriendSyncBDModel.users" Role="users" Multiplicity="0..1" />
+          <End Type="FriendSyncBDModel.Comentarios" Role="Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Publicaci__IdUsu__5165187F">
+          <End Type="FriendSyncBDModel.users" Role="users" Multiplicity="0..1" />
+          <End Type="FriendSyncBDModel.Publicaciones" Role="Publicaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Publicaciones">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SolicitudesAmistad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuarioEmisor" Type="Int32" Nullable="false" />
+          <Property Name="IdUsuarioReceptor" Type="Int32" Nullable="false" />
+          <Property Name="FechaSolicitud" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="users" Relationship="FriendSyncBDModel.FK_UsuarioEmisor" FromRole="SolicitudesAmistad" ToRole="users" />
+          <NavigationProperty Name="users1" Relationship="FriendSyncBDModel.FK_UsuarioReceptor" FromRole="SolicitudesAmistad" ToRole="users" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRespuesta" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_UsuarioEmisor">
+          <End Type="FriendSyncBDModel.users" Role="users" Multiplicity="1" />
+          <End Type="FriendSyncBDModel.SolicitudesAmistad" Role="SolicitudesAmistad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="SolicitudesAmistad">
+              <PropertyRef Name="IdUsuarioEmisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioReceptor">
+          <End Type="FriendSyncBDModel.users" Role="users" Multiplicity="1" />
+          <End Type="FriendSyncBDModel.SolicitudesAmistad" Role="SolicitudesAmistad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="SolicitudesAmistad">
+              <PropertyRef Name="IdUsuarioReceptor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Amigos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId1" Type="Int32" />
+          <Property Name="UsuarioId2" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaAceptacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="users" Relationship="FriendSyncBDModel.FK__Amigos__UsuarioI__5CD6CB2B" FromRole="Amigos" ToRole="users" />
+          <NavigationProperty Name="users1" Relationship="FriendSyncBDModel.FK__Amigos__UsuarioI__5DCAEF64" FromRole="Amigos" ToRole="users" />
+        </EntityType>
+        <Association Name="FK__Amigos__UsuarioI__5CD6CB2B">
+          <End Type="FriendSyncBDModel.users" Role="users" Multiplicity="0..1" />
+          <End Type="FriendSyncBDModel.Amigos" Role="Amigos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Amigos">
+              <PropertyRef Name="UsuarioId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Amigos__UsuarioI__5DCAEF64">
+          <End Type="FriendSyncBDModel.users" Role="users" Multiplicity="0..1" />
+          <End Type="FriendSyncBDModel.Amigos" Role="Amigos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Amigos">
+              <PropertyRef Name="UsuarioId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -55,6 +383,51 @@
                 <ScalarProperty Name="contraseña" ColumnName="contraseña" />
                 <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
                 <ScalarProperty Name="fechaNac" ColumnName="fechaNac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comentarios">
+            <EntityTypeMapping TypeName="FriendSyncBDModel.Comentarios">
+              <MappingFragment StoreEntitySet="Comentarios">
+                <ScalarProperty Name="FechaComentario" ColumnName="FechaComentario" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdPublicacion" ColumnName="IdPublicacion" />
+                <ScalarProperty Name="IdComentario" ColumnName="IdComentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publicaciones">
+            <EntityTypeMapping TypeName="FriendSyncBDModel.Publicaciones">
+              <MappingFragment StoreEntitySet="Publicaciones">
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="FechaPublicacion" ColumnName="FechaPublicacion" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdPublicacion" ColumnName="IdPublicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SolicitudesAmistad">
+            <EntityTypeMapping TypeName="FriendSyncBDModel.SolicitudesAmistad">
+              <MappingFragment StoreEntitySet="SolicitudesAmistad">
+                <ScalarProperty Name="FechaRespuesta" ColumnName="FechaRespuesta" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+                <ScalarProperty Name="IdUsuarioReceptor" ColumnName="IdUsuarioReceptor" />
+                <ScalarProperty Name="IdUsuarioEmisor" ColumnName="IdUsuarioEmisor" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Amigos">
+            <EntityTypeMapping TypeName="FriendSyncBDModel.Amigos">
+              <MappingFragment StoreEntitySet="Amigos">
+                <ScalarProperty Name="FechaAceptacion" ColumnName="FechaAceptacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="UsuarioId2" ColumnName="UsuarioId2" />
+                <ScalarProperty Name="UsuarioId1" ColumnName="UsuarioId1" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

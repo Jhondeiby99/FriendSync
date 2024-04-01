@@ -5,7 +5,7 @@
 .listanav {
     width: 100%;
     padding-right: 110px;
-    padding-left: 110px;
+    padding-left: 110px !important;
 }
 
 .libarranav {
@@ -39,4 +39,81 @@
     width: 50px;
     margin-right: 2%;
 }
+.divImagenPubli{
+    margin:auto;
+    width:50%;
+}
+.camposRegistro {
+    padding-top: 5%;
+}
+.imagenpubli{
+    padding:2%;
+    width:60% !important;
+    margin:auto;
+}
+.publicard{
+    padding:5%;
+}
+.fotoperfilpubli {
+    width: 43px;
+    height: 40px;
+    border-radius: 100%;
+}
+.divusuario {
+    display:flex;
+}
+.nombreusuario {
+    font-weight:bolder;
+    margin-left:2%;
+    margin-top: 5px;
+}
+.foto-perfil-comentario {
+    width: 43px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right: 2%;
+}
+.comentario {
+    width: 80%;
+    padding-bottom: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+.fecha-comentario {
+    margin-left: 46%;
+}
+.contenido-comentario{
+    margin-left:11%;
+}
+.nombre-usuario-comentario{
+    font-weight:bolder;
+}
+.comentarios {
+    background-color: gainsboro;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 
+}
+h4 {
+    margin:5%;
+    padding-bottom:5%;
+    padding-Top:5%;
+}
+.div-textbox-enviar {
+    display:flex;
+    flex-wrap:wrap;
+    padding:2%;
+    background-color: gainsboro;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+
+}
+.inputcomentario{
+    width:80% !important;
+    margin-right:2% !important;
+}

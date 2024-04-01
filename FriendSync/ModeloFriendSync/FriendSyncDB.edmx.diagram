@@ -6,6 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="954a53d6bc744b00a1cb25394e58c071" Name="Diagram1">
         <EntityTypeShape EntityType="FriendSyncBDModel.users" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FriendSyncBDModel.Comentarios" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="FriendSyncBDModel.Publicaciones" Width="1.5" PointX="3" PointY="4.125" />
+        <AssociationConnector Association="FriendSyncBDModel.FK__Comentari__IdPub__5441852A" />
+        <AssociationConnector Association="FriendSyncBDModel.FK__Comentari__IdUsu__5535A963" />
+        <AssociationConnector Association="FriendSyncBDModel.FK__Publicaci__IdUsu__5165187F" />
+        <EntityTypeShape EntityType="FriendSyncBDModel.SolicitudesAmistad" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="FriendSyncBDModel.FK_UsuarioEmisor" />
+        <AssociationConnector Association="FriendSyncBDModel.FK_UsuarioReceptor" />
+        <EntityTypeShape EntityType="FriendSyncBDModel.Amigos" Width="1.5" PointX="3" PointY="7.375" />
+        <AssociationConnector Association="FriendSyncBDModel.FK__Amigos__UsuarioI__5CD6CB2B" />
+        <AssociationConnector Association="FriendSyncBDModel.FK__Amigos__UsuarioI__5DCAEF64" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -65,17 +65,8 @@ namespace FriendSyncForms
             }
             catch (Exception ex)
             {
-                Label10.Text = "Error al crear el usuario: ";
-                Exception innerException = ex.InnerException;
-                while (innerException != null)
-                {
-                    Label10.Text += innerException.Message;
-                    innerException = innerException.InnerException;
-                    if (innerException != null)
-                    {
-                        Label10.Text += " -> ";
-                    }
-                }
+                Label10.Text = "Error al crear el usuario porque ya existe";
+                
             }
 
 

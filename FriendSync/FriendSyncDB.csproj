@@ -88,6 +88,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModeloFriendSync\Amigos.cs">
+      <DependentUpon>FriendSyncDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloFriendSync\Comentarios.cs">
+      <DependentUpon>FriendSyncDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModeloFriendSync\FriendSyncDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,6 +108,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FriendSyncDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloFriendSync\Publicaciones.cs">
+      <DependentUpon>FriendSyncDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloFriendSync\SolicitudesAmistad.cs">
+      <DependentUpon>FriendSyncDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ModeloFriendSync\users.cs">
       <DependentUpon>FriendSyncDB.tt</DependentUpon>

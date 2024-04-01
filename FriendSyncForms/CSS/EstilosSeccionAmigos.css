@@ -1,14 +1,14 @@
 ﻿
 .divcards {
     display: flex;
-    justify-content: space-between;
+    flex-wrap:wrap;
     width: 70%;
     margin: auto;
     margin-top: 3%;
     margin-bottom: 3%;
 }
 .amigosCard {
-    width: 50%;
+    width: 30.5%;
     margin-right: 20px;
     margin-bottom: 20px;
 }
@@ -34,4 +34,49 @@ card-img-top {
 .logonav {
     width: 50px;
     margin-right: 2%;
+}
+.imgSolicituA {
+    margin-right: 9%;
+    width: 43px;
+    height: 40px;
+    border-radius: 100%;
+}
+.pSoli {
+    margin-right: 9%;
+}
+.botonesSoli{
+    margin-top:5%;
+    margin-right:5%;
+}
+.btnEnviarSoli{
+    margin-top:7%;
+}
+.imgCardUser{
+    height: 50%;
+}
+.contenedorTarjetasUsuario {
+    width: 80% !important;
+}
+.divListaAmigos{
+    margin-top:2%;
+}
+.fotoperfilAmigo {
+    width: 43px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right:5%;
+}
+.amigo {
+    display:flex;
+    flex-wrap:wrap;
+    margin-top: 4%;
+}
+.botonEliminarAmigo {
+    margin-left: 30%;
+    width: 30%;
+    height: 25px;
+    padding: initial;
+}
+.pNombreUAmigo{
+    width:20%
 }

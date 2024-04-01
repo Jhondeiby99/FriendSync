@@ -26,5 +26,9 @@ namespace FriendSyncDB.ModeloFriendSync
         }
     
         public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<Comentarios> Comentarios { get; set; }
+        public virtual DbSet<Publicaciones> Publicaciones { get; set; }
+        public virtual DbSet<SolicitudesAmistad> SolicitudesAmistad { get; set; }
+        public virtual DbSet<Amigos> Amigos { get; set; }
     }
 }

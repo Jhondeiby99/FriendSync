@@ -125,7 +125,7 @@
                         </div>
                         <div>
                             <asp:Button ID="Button5" runat="server" CssClass="btn btn-danger" OnClick="Button5_Click"
-                                Text="cerrar sesion" />
+                                Text="Cerrar sesion" />
                         </div>
                         <div>
                             <asp:Label ID="Label1" runat="server"></asp:Label>
